@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Resume using DOM manipulation
+        </title>
+        <link href="fontawesome-free-5.14.0-web/css/all.css" rel="stylesheet">
+        <style>
+            * {
+                    box-sizing: border-box;
+                    font-family: sans-serif;
+                    
+            }
+            .heading{
+                font-size: 35px;
+                position: relative;
+                top: -5px;
+                color: rgba(92, 89, 89, 0.877);
+            }
+            .topDiv{
+                margin: 0px;padding-top: 20px;
+                padding-bottom: 40px;
+                background-color: rgba(63, 61, 61, 0.877);
+            }
+            .divImg{
+                text-align: center;
+                position: relative ;
+                top: 10px;
+            }
+            .imgAvatar{
+                width:200px;
+                border-radius: 50%;
+                border-width: 5px ;
+                border-style: dotted;
+                border-color: rgb(255, 208, 0);
+                padding: 2px;
+                align-content: center;
+            }
+
+            .imgDivWhite{
+                background-color: rgba(255, 255, 255, 0.815);
+                padding: 20px;
+                position: relative;
+                top: 22px;
+            }
+            .spanName{
+                background-color: rgb(253, 186, 42);
+                font: bold;
+                font-size: 65px;
+                font-family: sans-serif;
+                position: relative;
+                top: -45px;
+                padding: 15px 50px 15px 50px;
+                border-radius: 10px;
+            }
+
+            .divFloatLeft{
+                float: left;
+                width: 50%;
+                margin-top: 15px;
+                border-right:gray;
+                border-right-width: 1px;
+                border-right-style: solid;
+                padding:20px
+            }
+            .divFloatRight{
+                float: right;
+                width: 50%;
+                margin-top: 15px;
+                padding: 20px;
+            }
+            .iStyle{
+                font-size: 50px;
+                color:rgb(20, 88, 105);
+                padding:3px;
+                border-radius: 50%;
+                border-style: dotted;
+                border-color: rgb(253, 186, 42);
+                border-width: 4px;
+            }
+            .iStyle2{
+                font-size: 40px;
+                color:rgb(20, 88, 105);
+                padding:7px;
+                border-radius: 50%;
+                border-style: dotted;
+                border-color: rgb(253, 186, 42);
+                border-width: 4px;
+            }
+            .ulStyle{
+                padding-left: 20px;
+                padding-top: 0px;
+                margin-top: 5px;
+            }
+        </style>
+    </head>
+    <body>
+        <script>
+            var div1 = document.createElement('div');
+            div1.setAttribute('class','topDiv')
+
+            
+            var div1_1 = document.createElement('div');
+            div1_1.setAttribute('class','divImg')
+
+            var img1 = document.createElement('img');
+            img1.setAttribute('src','img_avatar.png');
+            img1.setAttribute('alt','Avatar');
+            img1.setAttribute('class','imgAvatar');
+
+            div1_1.appendChild(img1);
+
+            var div1_2 = document.createElement('div');
+            div1_2.setAttribute('class','imgDivWhite')
+
+            var div1_3=document.createElement('div');
+            div1_3.style.textAlign = 'center';
+
+            var span1 = document.createElement('span');
+            span1.setAttribute('class','spanName')
+            span1.innerText='BRIAN DUDEY'
+
+            div1_3.appendChild(span1);
+            div1.append(div1_1, div1_2, div1_3);
+
+            document.body.append(div1);
+            
+            var div2 = document.createElement('div');
+            div2.style.paddingTop = '10px';
+            div2.style.textAlign = 'center';
+            div2.innerText = 'N. Damen Avenue, Chicago 99999 | 999-999-9999 | hello@kickresume.com | www.kickresume.com';
+
+            document.body.appendChild(div2);
+
+            var hr1 = document.createElement('hr');
+            document.body.appendChild(hr1);
+
+            var divLeft = document.createElement('div');
+            divLeft.setAttribute('class','divFloatLeft');
+
+            var divRight = document.createElement('div');
+            divRight.setAttribute('class','divFloatRight');
+
+            var i1 = document.createElement('i');
+            i1.setAttribute('class','fas fa-user-circle iStyle');
+
+            divLeft.appendChild(i1);
+
+            var span2 = document.createElement('span');
+            span2.setAttribute('class','heading');
+            span2.innerText='Profile';
+
+            divLeft.appendChild(span2);
+
+            var br1 = document.createElement('br');
+            var br2 = document.createElement('br');
+            divLeft.append(br1, br2);
+
+            divL1 = document.createElement('div');
+            divL1.style.paddingLeft = '3px';
+            divL1.innerText = 'Innovativeoptimized solution seeker. Excited to be at the deployment phase of my new career as a web developer. I am ambitious, adventerous, assiduous, animated, and an alliteration advocate.';
+            divLeft.appendChild(divL1);
+
+            var br3 = document.createElement('br');
+            divLeft.appendChild(br3);
+
+            var i2 = document.createElement('i');
+            i2.setAttribute('class','fas fa-flask iStyle2');
+            divLeft.appendChild(i2);
+
+            var span3 = document.createElement('span');
+            span3.setAttribute('class','heading');
+            span3.innerText='Skills';
+            divLeft.appendChild(span3);
+
+            var br4 = document.createElement('br');
+            divLeft.appendChild(br4);
+
+            var divL2 = document.createElement('div');
+            divL2.style.textAlign = 'center';
+            divL2.style.fontWeight = 'bold';
+            divL2.innerText = 'Technical Skills';
+            divLeft.appendChild(divL2);
+
+            var tab1 = document.createElement('table');
+            tab1.style.width = '99%';
+            tab1.style.paddingLeft = '3px';
+
+            var tab2 = document.createElement('table');
+            tab2.style.width = '99%';
+            tab2.style.paddingLeft = '3px';
+
+            function createRangeEle(type,id,name,min,max,value){
+                var rv = document.createElement('input');
+                rv.setAttribute('type',type);
+                rv.setAttribute('id',id);
+                rv.setAttribute('name',name);
+                rv.setAttribute('min',min);
+                rv.setAttribute('max',max);
+                rv.setAttribute('value', value);
+                rv.setAttribute('readOnly',true);
+                rv.setAttribute('disabled',true);
+                rv.style.width = '100%'
+                return rv;
+            }
+
+            var ran1 = createRangeEle('range','JsRange','JsRange','0','10','8');
+            var ran2 = createRangeEle('range','CSSRange','CSSRange','0','10','8');
+            var ran3 = createRangeEle('range','HTMLRange','HTMLRange','0','10','6');
+            var ran4 = createRangeEle('range','ReactRange','ReactRange','0','10','6');
+            var ran5 = createRangeEle('range','ReduxRange','ReduxRange','0','10','8');
+            var ran6 = createRangeEle('range','MongoRange','MongoRange','0','10','8');
+            var ran7 = createRangeEle('range','DepRange','DepRange','0','10','10');
+            var ran8 = createRangeEle('range','ProMagmtRange','ProMagmtRange','0','10','10');
+            var ran9 = createRangeEle('range','RecruitmentRange','RecruitmentRange','0','10','8');
+            var ran10 = createRangeEle('range','BusDevRange','BusDevRange','0','10','10');
+            var ran11 = createRangeEle('range','MoEditingRangengoRange','EditingRange','0','10','8');
+            var ran12 = createRangeEle('range','FundRaisingRange','FundRaisingRange','0','10','10');
+
+            var tr1 = document.createElement('tr');
+
+            var td11 = document.createElement('td');
+            td11.style.width = '50%';
+            td11.innerText = 'JavaScript';
+
+            var td12 = document.createElement('td');
+            td12.appendChild(ran1);
+
+            tr1.append(td11, td12);
+
+            var tr2 = document.createElement('tr');
+
+            var td21 = document.createElement('td');
+            td21.style.width = '50%';
+            td21.innerText = 'CSS';
+
+            var td22 = document.createElement('td');
+            td22.appendChild(ran2);
+
+            tr2.append(td21, td22);
+
+            var tr3 = document.createElement('tr');
+
+            var td31 = document.createElement('td');
+            td31.style.width = '50%';
+            td31.innerText = 'React';
+
+            var td32 = document.createElement('td');
+            td32.appendChild(ran3);
+
+            tr3.append(td31, td32);
+			
+            var tr4 = document.createElement('tr');
+
+            var td41 = document.createElement('td');
+            td41.style.width = '50%';
+            td41.innerText = 'Redux';
+
+            var td42 = document.createElement('td');
+            td42.appendChild(ran4);
+
+            tr4.append(td41, td42);
+
+            var tr5 = document.createElement('tr');
+
+            var td51 = document.createElement('td');
+            td51.style.width = '50%';
+            td51.innerText = 'Mongo';
+
+            var td52 = document.createElement('td');
+            td52.appendChild(ran5);
+
+            tr5.append(td51, td52);
+
+            var tr6 = document.createElement('tr');
+
+            var td61 = document.createElement('td');
+            td61.style.width = '50%';
+            td61.innerText = 'Deployment';
+
+            var td62 = document.createElement('td');
+            td62.appendChild(ran6);
+
+            tr6.append(td61, td62);
+
+            var tr7 = document.createElement('tr');
+
+            var td71 = document.createElement('td');
+            td71.style.width = '5%';
+            td71.innerText = 'HTML';
+
+            var td72 = document.createElement('td');
+            td72.appendChild(ran7);
+
+            tr7.append(td71, td72);
+
+            tab1.append(tr1, tr2, tr3, tr4, tr5, tr6, tr7);
+
+            divLeft.appendChild(tab1);
+
+            var divL3 = document.createElement('div');
+            divL3.style.textAlign = 'center';
+            divL3.style.fontWeight = 'bold';
+            divL3.innerText = 'Additional Skills';
+            divLeft.appendChild(divL3);
+
+            var tb2tr1 = document.createElement('tr');
+
+            var tb2tr1td1 = document.createElement('td');
+            tb2tr1td1.style.width = '50%';
+            tb2tr1td1.innerText = 'Project Management';
+
+            var tb2tr1td2 = document.createElement('td');
+            tb2tr1td2.appendChild(ran8);
+
+            tb2tr1.append(tb2tr1td1, tb2tr1td2);
+
+            var tb2tr2 = document.createElement('tr');
+
+            var tb2tr2td1 = document.createElement('td');
+            tb2tr2td1.style.width = '50%';
+            tb2tr2td1.innerText = 'Recruitment';
+
+            var tb2tr2td2 = document.createElement('td');
+            tb2tr2td2.appendChild(ran9);
+
+            tb2tr2.append(tb2tr2td1, tb2tr2td2);
+
+            var tb2tr3 = document.createElement('tr');
+
+            var tb2tr3td1 = document.createElement('td');
+            tb2tr3td1.style.width = '50%';
+            tb2tr3td1.innerText = 'Business Development';
+
+            var tb2tr3td2 = document.createElement('td');
+            tb2tr3td2.appendChild(ran10);
+
+            tb2tr3.append(tb2tr3td1, tb2tr3td2);
+			
+            var tb2tr4 = document.createElement('tr');
+
+            var tb2tr4td1 = document.createElement('td');
+            tb2tr4td1.style.width = '50%';
+            tb2tr4td1.innerText = 'Editing';
+
+            var tb2tr4td2 = document.createElement('td');
+            tb2tr4td2.appendChild(ran11);
+
+            tb2tr4.append(tb2tr4td1, tb2tr4td2);
+
+            var tb2tr5 = document.createElement('tr');
+
+            var tb2tr5td1 = document.createElement('td');
+            tb2tr5td1.style.width = '50%';
+            tb2tr5td1.innerText = 'Fundraising';
+
+            var tb2tr5td2 = document.createElement('td');
+            tb2tr5td2.appendChild(ran12);
+
+            tb2tr5.append(tb2tr5td1, tb2tr5td2);
+
+            tab2.append(tb2tr1, tb2tr2, tb2tr3, tb2tr4, tb2tr5);
+
+            divLeft.appendChild(tab2);
+
+            var br5 = document.createElement('br');
+            divLeft.appendChild(br5);
+
+            var i3 = document.createElement('i');
+            i3.setAttribute('class','fas fa-briefcase iStyle2');
+            divLeft.appendChild(i3);
+
+            var span4 = document.createElement('span');
+            span4.setAttribute('class','heading');
+            span4.innerText = 'Work experience'
+            divLeft.appendChild(span4);
+
+            var br6 = document.createElement('br');
+            var br7 = document.createElement('br');
+            divLeft.append(br6,br7);
+
+            tab3 = document.createElement('table');
+            tab3.style.width = '99%';
+            tab3.paddingLeft = '3px';
+
+            var tb3d1 = document.createElement('td');
+            tb3d1.innerHTML = '<b>Event Manager</b><br>C3 Presents, Washington DC'
+
+            var tb3d2 = document.createElement('td');
+            tb3d2.style.textAlign = 'right';
+            tb3d2.innerText = '03/2014 - 02/2017'
+
+            tab3.append(tb3d1, tb3d2);
+
+            divLeft.appendChild(tab3);
+
+            var ul1 = document.createElement('ul');
+            ul1.setAttribute('class','ulStyle');
+
+            ul1li1 = document.createElement('li')
+            ul1li1.innerText = 'Lead and execute all phases of event planning and production spanning committe recruitment, training, vendor relationships and onsite facilitaiton.'
+            ul1li2 = document.createElement('li')
+            ul1li2.innerText = 'Brought new business to the organization through relentless networking and stewardship which helped the company win the bid for the State Department Summit on the Middle East and, the companies largest civic event to date, the United State of Women'
+            ul1li3 = document.createElement('li')
+            ul1li3.innerText = 'Exercise fiscal control over budget creation, tracking and reporting. Collaborate with employees at all organizational levels to advance cohesive operations.'
+
+            ul1.append(ul1li1, ul1li2, ul1li3);
+
+            divLeft.appendChild(ul1);
+
+            var i4 = document.createElement('i');
+            i4.setAttribute('class','fas fa-briefcase iStyle2');
+
+            var span5 = document.createElement('span');
+            span5.setAttribute('class','heading');
+            span5.innerHTML = 'Work experience';
+
+            var br8 = document.createElement('br');
+            var br9 = document.createElement('br');
+
+            var tab4 = document.createElement('table');
+            tab4.style.width = '99%';
+            tab4.style.paddingLeft = '3px';
+
+            var tb4d1 = document.createElement('td');
+            tb4d1.innerHTML = '<b>Community Relations Manager</b><br>Gay & Lesbian Elder Housing, Los Angeles';
+            var tb4d2 = document.createElement('td');
+            tb4d2.style.textAlign = 'right';
+            tb4d2.innerText = '06/2011 - 01/2014'
+
+            tab4.append(tb4d1, tb4d2);
+
+            var ul2 = document.createElement('ul');
+            ul2.setAttribute('class','ulStyle');
+
+            var ul2li1 = document.createElement('li');
+            ul2li1.innerText = 'Arranging presentations and pitch deck.';
+            var ul2li2 = document.createElement('li');
+            ul2li2.innerText = 'Designing a PR plan and establishing important focus points.';
+            var ul2li3 = document.createElement('li');
+            ul2li3.innerText = 'Designing, creating and managing content across multiple communication platforms.';
+            var ul2li4 = document.createElement('li');
+            ul2li4.innerText = 'Building relationships with key media players.';
+
+            ul2.append(ul2li1, ul2li2, ul2li3, ul2li4);
+
+            var br10 = document.createElement('br');
+
+            var i5 = document.createElement('i');
+            i5.setAttribute('class','fas fa-graduation-cap iStyle2');
+
+            var span6 = document.createElement('span');
+            span6.setAttribute('class','heading');
+            span6.innerText = 'Education'
+
+            var br11 = document.createElement('br');
+            var br12 = document.createElement('br');
+
+            var tab5 = document.createElement('table');
+            tab5.style.width = '99%';
+            tab5.paddingLeft = '3px'
+
+            var tb5td1 = document.createElement('td');
+            tb5td1.innerHTML = '<b>Engineering Immersion Program</b><br>Thinkful, Chicago, IL';
+
+            var tb5td2 = document.createElement('td');
+            tb5td2.style.textAlign = 'right';
+            tb5td2.innerHTML = '11/2018 - 06/2018'
+
+            tab5.append(tb5td1, tb5td2);
+
+            var br13 = document.createElement('br');
+
+            var divR1 = document.createElement('div');
+            divR1.style.paddingLeft = '3px';
+            divR1.innerText = 'Project-focuesd intensive program with emphasis on Mongo, Express, React, and JavaScript (MERN) technical stack.';
+
+            var ul3 = document.createElement('ul');
+            ul3.setAttribute('class','ulStyle');
+            
+            var ul3li1 = document.createElement('li');
+            ul3li1.innerText = 'Developed a full-stack web application, "RenewU", using React that allows users to explore various aspects of meditation. User\'s progress is stored on a backend created using Node and MongoDB.'
+            var ul3li2 = document.createElement('li');
+            ul3li2.innerText = 'Developed a language learning app, "Foodie Phonetics" using spaced repetition and a linked list data structure. React was used to create the front end components while Node and Mongo were used to create a backend that stores user data.'
+            var ul3li3 = document.createElement('li');
+            ul3li3.innerText = 'Developed a conciergo app, "Pley", for individuals looking for curated suggestions when visiting a new place. React was used to develop the front end which includes real-time chat, drag and drop and variety of advanced features. The backend, built using Node, Express, and Mongo, takes advantage of well-developed RESTful API, Geospatial searching, and user authenticaiton with JWT.'
+
+            ul3.append(ul3li1, ul3li2, ul3li3);
+
+            var tab6 = document.createElement('table');
+            tab6.style.width = '99%';
+            tab6.paddingLeft = '3px';
+
+            var tb6td1 = document.createElement('td');
+            tb6td1.innerHTML = '<b>BA, English</b><br>University of California, Los Angeles';
+
+            var tb6td2 = document.createElement('td');
+            tb6td2.style.textAlign = 'right';
+            tb6td2.innerText = '09/2001 - 09/2005' 
+
+            tab6.append(tb6td1, tb6td2);
+
+            divRight.append(i4, span5, br8, br9, tab4, ul2, br10,i5, span6, br11, br12, tab5, br13, divR1, ul3, tab6);
+
+            document.body.append(divLeft, divRight);
+        </script>
+    </body>
+</html>
